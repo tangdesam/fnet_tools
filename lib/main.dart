@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fnet_tools/internet_address_lookup_page.dart';
 import 'package:fnet_tools/socket_test_page.dart';
 
 void main() {
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
       routes: {
         MenuPage.routeName : (context) => MenuPage(title: appTitle),
         SocketTestPage.routeName : (context) => SocketTestPage(title: 'Socket Test'),
+        InternetAddressLookupPage.routeName : (context) => InternetAddressLookupPage(title: 'Internet Address Lookup'),
       },
     );
   }
@@ -55,38 +57,57 @@ class MenuPage extends StatelessWidget {
         // the App.build method, and use it to set our appbar title.
         title: Text(title),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            ListTile(
-              title: Center(
-                child: Text('Socket Test'),
+      body: Container(
+        padding: EdgeInsets.all(8.0),
+        child: Center(
+          // Center is a layout widget. It takes a single child and positions it
+          // in the middle of the parent.
+          child: Column(
+            // Column is also a layout widget. It takes a list of children and
+            // arranges them vertically. By default, it sizes itself to fit its
+            // children horizontally, and tries to be as tall as its parent.
+            //
+            // Invoke "debug painting" (press "p" in the console, choose the
+            // "Toggle Debug Paint" action from the Flutter Inspector in Android
+            // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
+            // to see the wireframe for each widget.
+            //
+            // Column has various properties to control how it sizes itself and
+            // how it positions its children. Here we use mainAxisAlignment to
+            // center the children vertically; the main axis here is the vertical
+            // axis because Columns are vertical (the cross axis would be
+            // horizontal).
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              ListTile(
+                title: const Center(
+                  child: Text('Internet Address Lookup'),
+                ),
+                subtitle: const Center(
+                  child: Text('Address to IP'),
+                ),
+                onTap: () {
+                  Navigator.pushNamed(context, InternetAddressLookupPage.routeName);
+                },
+                shape: const OutlineInputBorder(borderSide: BorderSide(color: Colors.blue)),
               ),
-              subtitle: Center(
-                child: Text('Socket connect test'),
+              const SizedBox(
+                height: 8.0,
               ),
-              onTap: () {
-                Navigator.pushNamed(context, SocketTestPage.routeName);
-              },
-            ),
-          ],
+              ListTile(
+                title: const Center(
+                  child: Text('Socket Test'),
+                ),
+                subtitle: const Center(
+                  child: Text('Socket connect test'),
+                ),
+                onTap: () {
+                  Navigator.pushNamed(context, SocketTestPage.routeName);
+                },
+                shape: const OutlineInputBorder(borderSide: BorderSide(color: Colors.blue)),
+              ),
+            ],
+          ),
         ),
       ),
     );
